@@ -1,0 +1,15 @@
+<% @page_title = "New Standard" %>
+
+<%= link_to("<< Back to List", {:action => 'list', :standard_subject_id => @standard_subject.id}, :class => 'back-link') %>
+
+<div class="lookup new">
+  <h2><%= @page_title %></h2>
+  <%= form_for(:standard, :url => {:action => 'create'}) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Create #{@page_title}") %>
+    </div>
+  <% end %>
+</div>

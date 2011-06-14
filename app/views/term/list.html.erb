@@ -1,0 +1,25 @@
+<% @page_title = "Terms" %>
+
+<%= link_to("<< Back to Menu", {:controller => 'admin', :action => 'menu'}, :class => 'back-link') %>
+<div class="teacher list">
+  <h2><%= @page_title %></h2>
+
+  <%= link_to('Add New Term', {:action => 'new'}, :class => 'action new') %>
+
+  <div><%= pluralize(@terms.size, 'section level') %> found</div>
+  
+  <table class="listing" summary="section level list">
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr> 
+    <% @terms.each do |term| %>
+    <tr class="<%= cycle('odd', 'even') %>"> 
+      <td><%= term.name %></td> 
+      <td class="actions">
+        <%= link_to('Edit', {:action => 'edit', :id => term.id}, :class => 'action edit') %>
+    </tr> 
+    <% end %>
+  </table> 
+
+</div>

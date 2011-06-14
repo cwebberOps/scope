@@ -1,5 +1,6 @@
 class Section < ActiveRecord::Base
  belongs_to :term
+ belongs_to :section_level
  belongs_to :period
  belongs_to :teacher
  belongs_to :subject

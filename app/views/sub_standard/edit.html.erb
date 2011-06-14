@@ -1,0 +1,16 @@
+<% @sub_title = "Edit Sub-Standard" %>
+<% @page_title = "#{@standard.standard_subject.name} | #{@sub_title}" %>
+
+<%= link_to("<< Back to List", {:action => 'list', :standard_id => @standard.id}, :class => 'back-link') %>
+
+<div class="lookup edit">
+  <h2><%= @page_title %></h2>
+  <%= form_for(:sub_standard, :url => {:action => 'update', :id => @standard.id, :standard_id => @standard.id}) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("#{@sub_title}") %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,19 @@
+<% @page_title = "Delete Standard: #{@standard.designation}" %>
+
+<%= link_to("<< Back to List", {:action => 'list', :standard_subject_id => @standard_subject.id}, :class => 'back-link') %>
+
+<div class="user delete">
+  <h2>Delete Standard</h2>
+  
+  <%= form_for(:standard, :url => {:action => 'destroy', :id => @standard.id, :standard_subject_id => @standard_subject.id}) do |f| -%> 
+
+    <p>Are you sure you want to permanently delete this teacher?</p>
+  
+    <p class="reference-name"><%= @standard.designation %></p>
+  
+    <div class="form-buttons">
+      <%= submit_tag("Delete Standard") %>
+    </div>
+    
+  <% end %>
+</div>

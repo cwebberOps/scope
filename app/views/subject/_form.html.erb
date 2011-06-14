@@ -1,0 +1,12 @@
+<%= error_messages_for(@subject) %>
+
+<table summary="Subject Fields">
+  <tr>
+    <th><%= f.label(:name) %></th> 
+    <td><%= f.text_field(:name) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:standard_subject_id, "Standard Subject") %></th>
+    <td><%= f.select(:standard_subject_id, @standard_subjects.collect {|ss| [ss.name, ss.id]}) %></td> 
+  </tr>
+</table>

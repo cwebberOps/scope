@@ -1,0 +1,29 @@
+<% @page_title = "#{@standard.standard_subject.name} | Sub-Standards" %>
+
+<%= link_to("<< Back to Standards", {:controller => 'Standard', :action => 'list', :standard_subject_id => @standard.standard_subject.id}, :class => 'back-link') %>
+<div class="standard list">
+  <h2><%= @page_title %></h2>
+
+  <%= link_to('Add New Sub-Standard', {:action => 'new', :standard_id => @standard.id}, :class => 'action new') %>
+
+  <div><%= pluralize(@sub_standards.size, 'sub-standard') %> found</div>
+  
+  <table class="listing" summary="sub-standard list">
+    <tr>
+      <th>Designation</th>
+      <th>Text</th>
+      <th>Actions</th>
+    </tr> 
+    <% @sub_standards.each do |sub_standard| %>
+    <tr class="<%= cycle('odd', 'even') %>"> 
+      <td><%= sub_standard.designation %></td> 
+      <td><%= sub_standard.value %></td> 
+      <td class="actions">
+        <%= link_to('Edit', {:action => 'edit', :id => sub_standard.id, :standard_id => @standard.id}, :class => 'action edit') %>
+        <%= link_to('Delete', {:action => 'delete', :id => sub_standard.id, :standard_id => @standard.id}, :class => 'action delete') %>
+      </td>
+    </tr> 
+    <% end %>
+  </table> 
+
+</div>

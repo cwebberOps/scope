@@ -1,4 +1,30 @@
 Scope::Application.routes.draw do
+  get "admin/menu"
+
+  get "admin/login"
+
+  get "standard/new"
+
+  get "standard/edit"
+
+  get "standard/list"
+
+  get "standard/delete"
+
+  get "period/new"
+
+  get "period/list"
+
+  get "period/edit"
+
+  get "section_level/new"
+
+  get "section_level/list"
+
+  get "section_level/edit"
+
+  get "section_level/delete"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -54,5 +80,5 @@ Scope::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+  match ':controller(/:action(/:id(.:format)))'
 end

@@ -1,0 +1,16 @@
+<% @sub_title = "New Sub-Standard" %>
+<% @page_title = "#{@standard.standard_subject.name} | #{@sub_title} for Standard #{@standard.designation}." %>
+
+<%= link_to("<< Back to List", {:action => 'list', :standard_id => @standard.id}, :class => 'back-link') %>
+
+<div class="lookup new">
+  <h2><%= @page_title %></h2>
+  <%= form_for(:sub_standard, :url => {:action => 'create'}) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Create #{@sub_title}") %>
+    </div>
+  <% end %>
+</div>

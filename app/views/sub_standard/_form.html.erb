@@ -1,0 +1,16 @@
+<%= error_messages_for(@sub_standard) %>
+
+<table summary="Standard Fields">
+  <tr>
+    <th><%= f.label(:designation) %></th> 
+    <td><%= f.text_field(:designation) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:standard_id, "Standard") %></th>
+    <td><%= f.select(:standard_id, @standards.collect {|s| [s.designation, s.id]}) %></td>
+  <tr>
+    <th><%= f.label(:value, "Text") %></th>
+    <td><%= f.text_area(:value, :size => '40x10') %></td>
+  </tr>
+
+</table>

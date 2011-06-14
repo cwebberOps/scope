@@ -1,0 +1,16 @@
+<% @page_title = 'New Teacher' %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="user new">
+  <h2>New Teacher</h2>
+  <%= form_for(:teacher, :url => {:action => 'create'}) do |f| %>
+
+      <%= render(:partial => 'form', :locals => {:f => f} ) %>
+  
+      <div class="form-buttons">
+        <%= submit_tag('Create New Teacher') %>
+      </div>
+  
+  <% end %>
+</div>

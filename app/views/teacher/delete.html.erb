@@ -1,0 +1,19 @@
+<% @page_title = "Delete Teacher: #{@teacher.name}" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="user delete">
+  <h2>Delete Teacher</h2>
+  
+  <%= form_for(:teacher, :url => {:action => 'destroy', :id => @teacher.id}) do |f| -%> 
+
+    <p>Are you sure you want to permanently delete this teacher?</p>
+  
+    <p class="reference-name"><%= @teacher.name %></p>
+  
+    <div class="form-buttons">
+      <%= submit_tag("Delete Teacher") %>
+    </div>
+    
+  <% end %>
+</div>

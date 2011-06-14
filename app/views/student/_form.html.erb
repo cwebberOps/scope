@@ -1,0 +1,25 @@
+<%= error_messages_for(@student) %>
+
+<table summary="Student Form Fields">
+  <tr>
+    <th><%= f.label(:last_name) %></th>
+    <td><%= f.text_field(:last_name) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:first_name) %></th>
+    <td><%= f.text_field(:first_name)%></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:grad_year) %></th>
+    <td><%= f.text_field(:grad_year) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:student_num) %></th>
+    <td><%= f.text_field(:student_num) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:can_log_in, "Can Log In?") %> </th>
+    <td><%= f.check_box(:can_log_in) %> </td>
+  </tr>
+</table>
+

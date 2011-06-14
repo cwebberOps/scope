@@ -1,0 +1,25 @@
+<% @page_title = "Periods" %>
+
+<%= link_to("<< Back to Menu", {:controller => 'admin', :action => 'menu'}, :class => 'back-link') %>
+<div class="lookup list">
+  <h2><%= @page_title %></h2>
+
+  <%= link_to('Add New Period', {:action => 'new'}, :class => 'action new') %>
+
+  <div><%= pluralize(@periods.size, 'period') %> found</div>
+  
+  <table class="listing" summary="period list">
+    <tr>
+      <th>Number</th>
+      <th>Actions</th>
+    </tr> 
+    <% @periods.each do |period| %>
+    <tr class="<%= cycle('odd', 'even') %>"> 
+      <td><%= period.period_num %></td> 
+      <td class="actions">
+        <%= link_to('Edit', {:action => 'edit', :id => period.id}, :class => 'action edit') %>
+    </tr> 
+    <% end %>
+  </table> 
+
+</div>

@@ -1,0 +1,32 @@
+<% @page_title = "Teachers" %>
+
+<%= link_to("<< Back to Menu", {:controller => 'admin', :action => 'menu'}, :class => 'back-link') %>
+<div class="teacher list">
+  <h2>Teachers</h2>
+
+  <%= link_to('Add New Teacher', {:action => 'new'}, :class => 'action new') %>
+
+  <div><%= pluralize(@teachers.size, 'teacher') %> found</div>
+  
+  <table class="listing" summary="teacher list">
+    <tr>
+      <th>Username</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Is Admin?</th>
+      <th>Actions</th>
+    </tr> 
+    <% @teachers.each do |teacher| %>
+    <tr class="<%= cycle('odd', 'even') %>"> 
+      <td><%= teacher.username %></td>
+      <td><%= teacher.name %></td> 
+      <td><%= mail_to(teacher.email) %></td>
+      <td><%= status_tag(teacher.is_admin, :true => "Yes", :false => "No") %></td>
+      <td class="actions">
+        <%= link_to('Edit', {:action => 'edit', :id => teacher.id}, :class => 'action edit') %>
+        <%= link_to('Delete', {:action => 'delete', :id => teacher.id}, :class => 'action delete') %>      </td>
+    </tr> 
+    <% end %>
+  </table> 
+
+</div>

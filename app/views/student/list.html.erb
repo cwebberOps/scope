@@ -1,0 +1,30 @@
+<% @page_title = "Students" %>
+
+<%= link_to("<< Back to Menu", {:controller => 'admin', :action => 'menu'}, :class => 'back-link') %>
+<div class="student list">
+  <h2>Students</h2>
+
+  <%= link_to('Add New Student', {:action => 'new'}, :class => 'action new') %>
+
+  <div><%= pluralize(@students.size, 'student') %> found</div>
+  
+  <table class="listing" summary="student list">
+    <tr>
+      <th>Name</th>
+      <th>Grad Year</th>
+      <th>Can Log In?</th>
+      <th>Actions</th>
+    </tr> 
+    <% @students.each do |student| %>
+    <tr class="<%= cycle('odd', 'even') %>"> 
+      <td><%= student.name %></td> 
+      <td><%= student.grad_year %></td>
+      <td><%= status_tag(student.can_log_in, :true => "Yes", :false => "No") %></td>
+      <td class="actions">
+        <%= link_to('Edit', {:action => 'edit', :id => student.id}, :class => 'action edit') %>
+        <%= link_to('Delete', {:action => 'delete', :id => student.id}, :class => 'action delete') %>      </td>
+    </tr> 
+    <% end %>
+  </table> 
+
+</div>

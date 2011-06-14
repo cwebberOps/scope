@@ -1,0 +1,33 @@
+<%= @page_title = "Menu" %>
+
+<div class="menu">
+  <h2>Menu</h2>
+  <div class="identity">Logged in as <%= session[:username] %></div>
+  
+  <h3>Teacher Functions</h3>
+  <ul>
+    <li>Things go here</li>
+  </ul>
+
+  <% if session[:is_admin] %>
+  <h3>Admin Functions</h3>
+  <ul>
+    <li><%= link_to("Manage Teachers", :controller => 'teacher') %></li>
+    <li><%= link_to("Manage Standards", :controller => 'standard_subject') %></li>
+    <li><%= link_to("Manage Subjects", :controller => 'subject') %></li>
+    <li><%= link_to("Manage Students", :controller => 'student') %></li>
+  </ul>
+  <h4>Lookup Tables</h4>
+  <ul>
+    <li><%= link_to("Manage Section Levels", :controller => 'section_level') %></li>
+    <li><%= link_to("Manage Terms", :controller => 'term') %></li>
+    <li><%= link_to("Manage Periods", :controller => 'period') %></li>
+  </ul>
+  <% end %>
+
+  <h3>Misc Functions</h3>
+  <ul>
+    <li>Change Password</li>
+    <li><%= link_to("Logout", :action => 'logout') %></li>
+  </ul>
+</div>

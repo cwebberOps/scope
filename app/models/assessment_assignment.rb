@@ -1,4 +1,4 @@
-class AssesmentAssignment < ActiveRecord::Base
+class AssessmentAssignment < ActiveRecord::Base
 
   belongs_to :assessment
   belongs_to :section
