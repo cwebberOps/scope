@@ -1,30 +1,4 @@
 Scope::Application.routes.draw do
-  get "admin/menu"
-
-  get "admin/login"
-
-  get "standard/new"
-
-  get "standard/edit"
-
-  get "standard/list"
-
-  get "standard/delete"
-
-  get "period/new"
-
-  get "period/list"
-
-  get "period/edit"
-
-  get "section_level/new"
-
-  get "section_level/list"
-
-  get "section_level/edit"
-
-  get "section_level/delete"
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

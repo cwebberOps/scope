@@ -1,0 +1,15 @@
+<% @page_title = "Rename Assessment" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="lookup edit">
+  <h2><%= @page_title %></h2>
+  <%= form_for(:assessment, :url => {:action => 'update', :id => @assessment.id}) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("#{@page_title}") %>
+    </div>
+  <% end %>
+</div>

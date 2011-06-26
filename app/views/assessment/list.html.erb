@@ -1,0 +1,28 @@
+<% @page_title = "Assessments" %>
+
+<%= link_to("<< Back to Menu", {:controller => 'admin', :action => 'menu'}, :class => 'back-link') %>
+<div class="assessment list">
+  <h2><%= @page_title %></h2>
+
+  <%= link_to('Add New Assessment', {:action => 'new'}, :class => 'action new') %>
+
+  <div><%= pluralize(@assessments.size, 'assessment') %> found</div>
+  
+  <table class="listing" summary="assessment list">
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr> 
+    <% @assessments.each do |assessment| %>
+    <tr class="<%= cycle('odd', 'even') %>"> 
+      <td><%= assessment.name %></td> 
+      <td class="actions">
+        <%#= link_to("View questions", {:controller => 'question', :action => 'list', :assessment_id => assessment.id}, :class => 'action show') %>
+        <%= link_to('Edit', {:action => 'edit', :id => assessment.id}, :class => 'action edit') %>
+        <%= link_to('Delete', {:action => 'delete', :id => assessment.id}, :class => 'action delete') %>
+      </td>
+    </tr> 
+    <% end %>
+  </table> 
+
+</div>
