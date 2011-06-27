@@ -1,0 +1,15 @@
+<% @page_title = "#{@assessment.name}: Edit Question" %>
+
+<%= link_to("<< Back to List", {:action => 'list', :assessment_id => @assessment.id}, :class => 'back-link') %>
+
+<div class="lookup edit">
+  <h2><%= @page_title %></h2>
+  <%= form_for(:question, :url => {:action => 'update', :id => @question.id}) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Update Question") %>
+    </div>
+  <% end %>
+</div>

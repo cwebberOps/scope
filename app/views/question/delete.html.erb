@@ -1,0 +1,19 @@
+<% @page_title = "#{@assessment.name}: Delete Question" %>
+
+<%= link_to("<< Back to List", {:action => 'list', :assessment_id => @assessment.id}, :class => 'back-link') %>
+
+<div class="question delete">
+  <h2>Delete Question</h2>
+  
+  <%= form_for(:question, :url => {:action => 'destroy', :id => @question.id, :assessment_id => @assessment.id}) do |f| -%> 
+
+    <p>Are you sure you want to permanently delete this question?</p>
+  
+    <p class="reference-name"><%= @question.value %></p>
+  
+    <div class="form-buttons">
+      <%= submit_tag("Delete Question") %>
+    </div>
+    
+  <% end %>
+</div>
