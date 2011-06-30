@@ -1,0 +1,15 @@
+<% @page_title = "Edit Answer" %>
+
+<%= link_to("<< Back to List", {:action => 'list', :question_id => @question.id}, :class => 'back-link') %>
+
+<div class="lookup edit">
+  <h2><%= @page_title %></h2>
+  <%= form_for(:answer, :url => {:action => 'update', :id => @answer.id}) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Update Answer") %>
+    </div>
+  <% end %>
+</div>

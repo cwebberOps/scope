@@ -1,0 +1,15 @@
+<% @page_title = "New Answer" %>
+
+<%= link_to("<< Back to List", {:action => 'list', :question_id => @question.id}, :class => 'back-link') %>
+
+<div class="lookup new">
+  <h2><%= @page_title %></h2>
+  <%= form_for(:answer, :url => {:action => 'create'}) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Create Answer") %>
+    </div>
+  <% end %>
+</div>

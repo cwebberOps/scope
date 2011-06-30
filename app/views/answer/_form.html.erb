@@ -1,0 +1,13 @@
+<%= error_messages_for(@answer) %>
+<%= f.hidden_field(:question_id) %>
+<table summary="Answer Fields">
+  <tr>
+    <th><%= f.label(:value, "Answer Text") %></th>
+    <td><%= f.text_field(:value) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:is_correct, "Is Correct?") %></th>
+    <td><%= f.check_box(:is_correct) %></td>
+  </tr>
+  
+</table>

@@ -21,7 +21,7 @@
       <td><%= question.value %></td> 
       <td>Answers Go Here</td>
       <td class="actions">
-        <%#= link_to("Answers", {:controller => 'answer', :action => 'list', :question_id => question.id}, :class => 'action show') %>
+        <%= link_to("Answers", {:controller => 'answer', :action => 'list', :question_id => question.id}, :class => 'action show') %>
         <%= link_to('Edit', {:action => 'edit', :id => question.id, :assessment_id => @assessment.id}, :class => 'action edit') %>
         <%= link_to('Delete', {:action => 'delete', :id => question.id, :assessment_id => @assessment.id}, :class => 'action delete') %>
       </td>

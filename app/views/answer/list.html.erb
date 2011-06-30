@@ -1,0 +1,31 @@
+<% @page_title = "Answers" %>
+
+<%= link_to("<< Back to Questions", {:controller => 'Question', :action => 'list', :assessment_id => @question.assessment_id }, :class => 'back-link') %>
+<div class="assessment list">
+  <h2><%= @page_title %></h2>
+
+  <h3>Question: <%= @question.value %></h3>
+  
+  <%= link_to('Add New Answer', {:action => 'new', :question_id => @question.id}, :class => 'action new') %>
+  
+  <div><%= pluralize(@answers.size, 'answer') %> found</div>
+  
+  <table class="listing" summary="answer list">
+    <tr>
+      <th>Answer</th>
+      <th>Correct?</th>
+      <th>Actions</th>
+    </tr> 
+    <% @answers.each do |answer| %>
+    <tr class="<%= cycle('odd', 'even') %>"> 
+      <td><%= answer.value %></td> 
+      <td><%= status_tag(answer.is_correct, :true => "Correct", :false => "") %> </td>
+      <td class="actions">
+        <%= link_to('Edit', {:action => 'edit', :id => answer.id, :question_id => @question.id}, :class => 'action edit') %>
+        <%= link_to('Delete', {:action => 'delete', :id => answer.id, :question_id => @question.id}, :class => 'action delete') %>
+      </td>
+    </tr> 
+    <% end %>
+  </table> 
+
+</div>
