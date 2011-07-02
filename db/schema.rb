@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110630233143) do
+ActiveRecord::Schema.define(:version => 20110702044617) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20110630233143) do
     t.integer  "num_questions"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_verified"
   end
 
   create_table "assessments_subjects", :id => false, :force => true do |t|
@@ -68,6 +69,8 @@ ActiveRecord::Schema.define(:version => 20110630233143) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "session_id"
+    t.boolean  "is_verified"
   end
 
   add_index "questions", ["assessment_id"], :name => "index_questions_on_assessment_id"

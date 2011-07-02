@@ -1,0 +1,20 @@
+<% @page_title = "Import Assessment Questions" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="lookup import">
+  <h2><%= @page_title %> for <%= @assessment.name %></h2>
+
+  <% form_tag({:action => 'verify', :id => @assessment.id}, :multipart => true) do %>
+    <table>
+      <tr>
+        <th><%= label_tag(:file) %></th>
+        <td><%= file_field_tag(:file) %></td>
+      </tr>
+    </table>
+
+    <div class="form-buttons">
+      <%= submit_tag("Import") %>
+    </div>
+  <% end %>
+</div>

@@ -55,4 +55,25 @@ class AssessmentController < ApplicationController
     #TODO Remove all of the asociated questions    
   end
 
+  def import
+    @assessment = Assessment.find(params[:id])
+  end
+  
+  def verify
+    
+    @assessment = Assessment.find(params[:id])
+    @file = params[:file]
+    
+    if @file.original_filename =~ /.xlsx/
+      @excel = Excelx.new(@file.tempfile.path, false, :warning)
+    else
+      @excel = Excel.new(@file.tempfile.path, false, :warning)
+    end
+    
+    2.upto(@excel.last_row) do |line|
+      question = Question.new(:assessment_id => )
+    end
+    
+  end
+  
 end

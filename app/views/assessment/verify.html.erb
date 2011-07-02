@@ -1,0 +1,16 @@
+<% @page_title = "Import Assessment Questions: Verify" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="lookup import">
+  <h2><%= @page_title %></h2>
+    <pre>
+      <%= @file.inspect %>
+      <%= @excel.to_s %>
+      <%= session.inspect %>
+      
+    </pre>
+    <div class="form-buttons">
+      <%= submit_tag("Import") %>
+    </div>
+</div>

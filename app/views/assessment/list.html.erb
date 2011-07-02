@@ -18,6 +18,7 @@
       <td><%= assessment.name %></td> 
       <td class="actions">
         <%= link_to("View questions", {:controller => 'question', :action => 'list', :assessment_id => assessment.id}, :class => 'action show') %>
+        <%= link_to("Import questions", {:action => 'import', :id => assessment.id}, :class => 'action import') %>
         <%= link_to('Edit', {:action => 'edit', :id => assessment.id}, :class => 'action edit') %>
         <%= link_to('Delete', {:action => 'delete', :id => assessment.id}, :class => 'action delete') %>
       </td>
