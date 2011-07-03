@@ -1,0 +1,27 @@
+<% @page_title = "Import Standards for #{@standard_subject.name}: Verify" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="lookup import">
+  <h2><%= @page_title %></h2>
+  <%= form_tag({:action => 'complete', :id => @standard_subject.id}) do %>
+  <% @standards.each do |standard| %>
+  <h3><%= check_box_tag("standard_id[]", standard.id, true) %><%= standard.designation %>: <%= standard.value %></h3>
+  <table>
+    <% standard.sub_standards.each do |sub_standard| %>
+      <tr>
+        <td>
+          <%= check_box_tag("sub_standard_id[]", sub_standard.id , true) %>
+        </td>
+        <td>
+          <%= standard.designation %><%= sub_standard.designation %>: <%= sub_standard.value %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <% end %>
+  <div class="form-buttons">
+      <%= submit_tag("Confirm") %>
+  </div>
+  <% end %>
+</div>

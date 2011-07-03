@@ -16,7 +16,7 @@ class StandardController < ApplicationController
   end
 
   def list
-    @standards = Standard.order("designation ASC").where(:standard_subject_id => @standard_subject.id)
+    @standards = Standard.order("designation ASC").where(:standard_subject_id => @standard_subject.id).where(:is_verified => true)
   end
 
   def edit

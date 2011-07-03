@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110702044617) do
+ActiveRecord::Schema.define(:version => 20110703000735) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(:version => 20110702044617) do
     t.integer  "num_questions"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_verified"
+    t.boolean  "is_verified",   :default => true
   end
 
   create_table "assessments_subjects", :id => false, :force => true do |t|
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20110702044617) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "session_id"
-    t.boolean  "is_verified"
+    t.boolean  "is_verified",        :default => true
   end
 
   add_index "questions", ["assessment_id"], :name => "index_questions_on_assessment_id"
@@ -135,6 +135,8 @@ ActiveRecord::Schema.define(:version => 20110702044617) do
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "session_id"
+    t.boolean  "is_verified",         :default => true
   end
 
   add_index "standards", ["standard_subject_id"], :name => "index_standards_on_standard_subject_id"
@@ -156,6 +158,8 @@ ActiveRecord::Schema.define(:version => 20110702044617) do
     t.text     "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "session_id"
+    t.boolean  "is_verified", :default => true
   end
 
   add_index "sub_standards", ["standard_id"], :name => "index_sub_standards_on_standard_id"

@@ -16,7 +16,7 @@ class SubStandardController < ApplicationController
   end
 
   def list
-    @sub_standards = SubStandard.order("designation ASC").where(:standard_id => @standard.id)
+    @sub_standards = SubStandard.order("designation ASC").where(:standard_id => @standard.id).where(:is_verified => true)
   end
 
   def edit

@@ -7,9 +7,9 @@
   
   <%= form_for(:standard, :url => {:action => 'destroy', :id => @standard.id, :standard_subject_id => @standard_subject.id}) do |f| -%> 
 
-    <p>Are you sure you want to permanently delete this teacher?</p>
+    <p>Are you sure you want to permanently delete this Standard?</p>
   
-    <p class="reference-name"><%= @standard.designation %></p>
+    <p class="reference-name"><%= @standard.designation %>: <%= @standard.value %></p>
   
     <div class="form-buttons">
       <%= submit_tag("Delete Standard") %>
