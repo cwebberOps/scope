@@ -1,16 +1,33 @@
-<% @page_title = "Import Assessment Questions: Verify" %>
+<% @page_title = "Import Questions for #{@assessment.name}: Verify" %>
 
 <%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
 
 <div class="lookup import">
   <h2><%= @page_title %></h2>
-    <pre>
-      <%= @file.inspect %>
-      <%= @excel.to_s %>
-      <%= session.inspect %>
-      
-    </pre>
-    <div class="form-buttons">
-      <%= submit_tag("Import") %>
-    </div>
+  <h4>Total Number of Questions to Import: <%= @questions.count %> </h4>
+  <%= form_tag({:action => 'complete', :id => @assessment.id}) do %>
+  <% @questions.each do |question| %>
+  <h3><%= check_box_tag("question_id[]", question.id, true) %><%= question.value %></h3>
+  <h4>Standard: <%= question.sub_standard.standard.standard_subject.designation %>: <%= question.sub_standard.standard.designation %><%= question.sub_standard.designation %> </h4>
+  <ul>
+    <% question.answers.each do |answer| %>
+      <%  if answer.is_correct %>
+        <li><strong><%= answer.value %></strong></li>
+      <% else %>
+        <li><%= answer.value %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <% end %>
+  <div class="form-buttons">
+      <%= submit_tag("Confirm") %>
+  </div>
+  <% end %>
 </div>
+
+<pre>
+
+<% @errors.each do |error| %>
+  <%= error %>
+<% end %>
+</pre>
