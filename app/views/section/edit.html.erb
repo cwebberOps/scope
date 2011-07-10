@@ -1,0 +1,15 @@
+<% @page_title = "Edit Section Details" %>
+
+<%= link_to("<< Back to List", {:action => 'list', :teacher_id => @teacher.id}, :class => 'back-link') %>
+
+<div class="lookup edit">
+  <h2><%= @page_title %></h2>
+  <%= form_for(:section, :url => {:action => 'update', :id => @section.id, :teacher_id => @teacher.id}) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Update Section") %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,36 @@
+<%= error_messages_for(@section) %>
+<%= f.hidden_field(:teacher_id) %>
+<table summary="Section Fields">
+  <tr>
+    <th>
+      <%= f.label(:subject_id, "Subject")  %>
+    </th>
+    <td>
+      <%= f.select(:subject_id, @subjects.collect {|s| [s.name, s.id]}) %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <%= f.label(:section_level_id, "Section Level") %>
+    </th>
+    <td>
+      <%= f.select(:section_level_id, @section_levels.collect {|sl| [sl.name, sl.id]}) %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <%= f.label(:term_id, "Term")  %>      
+    </th>
+    <td>
+      <%= f.select(:term_id, @terms.collect {|t| [t.name, t.id]}) %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <%= f.label(:period_id, "Period") %>
+    </th>
+    <td>
+      <%= f.select(:period_id, @periods.collect {|p| [p.period_num, p.id]}) %>
+    </td>
+  </tr>
+</table>

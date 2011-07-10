@@ -1,0 +1,32 @@
+<% @page_title = "Sections for #{@teacher.name}" %>
+
+<%= link_to("<< Back to Menu", {:controller => 'Admin', :action => 'menu'}, :class => 'back-link') %>
+<div class="section list">
+  <h2><%= @page_title %></h2>
+  
+  <%= link_to('Add New Section', {:action => 'new', :teacher_id => @teacher.id}, :class => 'action new') %>
+  
+  <div><%= pluralize(@sections.size, 'section') %> found</div>
+  
+  <table class="listing" summary="answer list">
+    <tr>
+      <th>Subject</th>
+      <th>Period</th>
+      <th>Term</th>
+      <th>Actions</th>
+    </tr> 
+    <% @sections.each do |section| %>
+    <tr class="<%= cycle('odd', 'even') %>"> 
+      <td><%= section.section_level.name %> <%= section.subject.name %></td> 
+      <td><%= section.period.period_num %> </td>
+      <td><%= section.term.name %></td>
+      <td class="actions">
+        <%= link_to("Add Students", '#') %>
+        <%= link_to('Edit', {:action => 'edit', :id => section.id, :teacher_id => @teacher.id}, :class => 'action edit') %>
+        <%= link_to('Delete', {:action => 'delete', :id => section.id, :teacher_id => @teacher.id}, :class => 'action delete') %>
+      </td>
+    </tr> 
+    <% end %>
+  </table> 
+
+</div>
