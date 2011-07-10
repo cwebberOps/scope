@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110707034020) do
+ActiveRecord::Schema.define(:version => 20110707045905) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20110707034020) do
   create_table "questions", :force => true do |t|
     t.integer  "assessment_id"
     t.integer  "sub_standard_id"
-    t.string   "value"
+    t.text     "value"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"

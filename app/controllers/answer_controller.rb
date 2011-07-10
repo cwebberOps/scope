@@ -10,7 +10,7 @@ class AnswerController < ApplicationController
   end
   
   def list
-    @answers = Answer.order("is_correct DESC")
+    @answers = Answer.where(:question_id => @question.id).order("is_correct DESC")
   end
   
   def new
