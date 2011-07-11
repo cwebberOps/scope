@@ -67,6 +67,55 @@ class SectionController < ApplicationController
     redirect_to(:action => 'list', :teacher_id => @section.teacher_id)
   end
   
+  def list_students
+    @section = Section.find(params[:id])
+  end
+  
+  def map_students_import
+    @section = Section.find(params[:id])
+  end
+  
+  def map_students_verify
+    
+  end
+  
+  def map_students_complete
+    
+  end
+  
+  def map_student
+    @section = Section.find(params[:id])
+    if params[:student_num]
+      if @student = Student.find_by_student_num(params[:student_num])
+        begin
+          @section.students << @student
+          flash[:notice] = "#{@student.name} was added to the section."
+        rescue
+          flash[:notice] = "#{@student.name} is already enrolled in the section."
+        end
+      else
+        flash[:notice] = "#{params[:student_num]} is not a valid student number."
+      end
+    end
+    redirect_to(:action => 'list_students', :id => @section.id, :teacher_id => @teacher.id)
+  end
+  
+  def unmap_students
+    message = ''
+    @section = Section.find(params[:id])
+    if unmap_student_ids = params[:unmap_student_id]
+      unmap_student_ids.each do |unmap_student_id|
+        if @student = Student.find_by_id(unmap_student_id)
+          @section.students.delete(@student)
+          message = message + "#{@student.name} removed from section.<br />\n"
+        end
+      end
+    end
+    flash[:notice] = message
+    redirect_to(:action => 'list_students', :id => @section.id, :teacher_id => @teacher.id)
+    
+  end
+  
   private
   
   def find_teacher

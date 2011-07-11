@@ -21,7 +21,7 @@
       <td><%= section.period.period_num %> </td>
       <td><%= section.term.name %></td>
       <td class="actions">
-        <%= link_to("Add Students", '#') %>
+        <%= link_to("Students", {:action => 'list_students', :id => section.id, :teacher_id => @teacher.id}, :class => 'action students') %>
         <%= link_to('Edit', {:action => 'edit', :id => section.id, :teacher_id => @teacher.id}, :class => 'action edit') %>
         <%= link_to('Delete', {:action => 'delete', :id => section.id, :teacher_id => @teacher.id}, :class => 'action delete') %>
       </td>

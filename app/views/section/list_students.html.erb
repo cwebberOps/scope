@@ -1,0 +1,29 @@
+<% @page_title = "Students Enrolled in #{@section.subject.name} #{@section.period.period_num}" %>
+
+<%= link_to("<< Back to List", {:controller => 'section', :action => 'list'}, :class => 'back-link') %>
+<div class="section list">
+  <h2><%= @page_title %></h2>
+  
+  <p><%= form_tag(:action => 'map_student', :id => @section.id, :teacher_id => @teacher.id) do %><%= label_tag(:student_num, "Add New Student") %> <%= text_field_tag(:student_num) %> <%= submit_tag("Add") %> <% end %> </p>
+  
+  <div><%= pluralize(@section.students.size, 'student') %> found</div>
+  <%= form_tag(:action => 'unmap_students', :id => @section.id, :teacher_id => @teacher.id) do %>
+  <table class="listing" summary="student list">
+    <tr>
+      <th>Remove?</th>
+      <th>Student Num</th>
+      <th>Last Name</th>
+      <th>First Name</th>
+    </tr> 
+    <% @section.students.each do |student| %>
+    <tr class="<%= cycle('odd', 'even') %>"> 
+      <td><%= check_box_tag("unmap_student_id[]", student.id, false) %></td> 
+      <td><%= student.student_num %> </td>
+      <td><%= student.last_name %></td>
+      <td><%= student.first_name %></td>
+    </tr> 
+    <% end %>
+  </table> 
+  <%= submit_tag("Remove Students") %>
+  <% end %>
+</div>
