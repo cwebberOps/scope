@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110707045905) do
+ActiveRecord::Schema.define(:version => 20110710231325) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -142,14 +142,17 @@ ActiveRecord::Schema.define(:version => 20110707045905) do
   add_index "standards", ["standard_subject_id"], :name => "index_standards_on_standard_subject_id"
 
   create_table "students", :force => true do |t|
-    t.string   "last_name",   :limit => 50
-    t.string   "first_name",  :limit => 50
+    t.string   "last_name",     :limit => 50
+    t.string   "first_name",    :limit => 50
     t.integer  "grad_year"
-    t.string   "password",    :limit => 50
+    t.string   "password",      :limit => 50
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "student_num"
-    t.boolean  "can_log_in",                :default => false
+    t.boolean  "can_log_in",                  :default => false
+    t.boolean  "is_verified",                 :default => true
+    t.integer  "import_status",               :default => 0
+    t.integer  "is_enrolled",                 :default => 1
   end
 
   create_table "sub_standards", :force => true do |t|

@@ -4,7 +4,7 @@
 <div class="student list">
   <h2>Students</h2>
 
-  <%= link_to('Add New Student', {:action => 'new'}, :class => 'action new') %>
+  <%= link_to('Add New Student', {:action => 'new'}, :class => 'action new') %> | <%= link_to('Import Entire School', {:action => 'import'}, :class => 'action import') %>
 
   <div><%= pluralize(@students.size, 'student') %> found</div>
   
@@ -17,7 +17,7 @@
     </tr> 
     <% @students.each do |student| %>
     <tr class="<%= cycle('odd', 'even') %>"> 
-      <td><%= student.name %></td> 
+      <td><%= student.list_name %></td> 
       <td><%= student.grad_year %></td>
       <td><%= status_tag(student.can_log_in, :true => "Yes", :false => "No") %></td>
       <td class="actions">

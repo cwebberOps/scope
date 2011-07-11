@@ -1,0 +1,20 @@
+<% @page_title = "Import Entire School" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="lookup import">
+  <h2><%= @page_title %></h2>
+
+  <% form_tag({:action => 'verify'}, :multipart => true) do %>
+    <table>
+      <tr>
+        <th><%= label_tag(:file) %></th>
+        <td><%= file_field_tag(:file) %></td>
+      </tr>
+    </table>
+
+    <div class="form-buttons">
+      <%= submit_tag("Import") %>
+    </div>
+  <% end %>
+</div>

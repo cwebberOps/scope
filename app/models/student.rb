@@ -11,9 +11,14 @@ class Student < ActiveRecord::Base
   validates_numericality_of :grad_year, :only_integer => true
   validates_numericality_of :student_num, :only_integer => true
   validates :student_num, :presence => true
+  validates_uniqueness_of :student_num
   
   def name
     "#{first_name} #{last_name}"
+  end
+  
+  def list_name
+    "#{last_name}, #{first_name}"
   end
   
 end
