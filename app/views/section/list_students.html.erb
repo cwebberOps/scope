@@ -4,7 +4,7 @@
 <div class="section list">
   <h2><%= @page_title %></h2>
   
-  <p><%= form_tag(:action => 'map_student', :id => @section.id, :teacher_id => @teacher.id) do %><%= label_tag(:student_num, "Add New Student") %> <%= text_field_tag(:student_num) %> <%= submit_tag("Add") %> <% end %> </p>
+  <p><%= link_to("Import Students", {:action => 'map_students_import', :id => @section.id}) %> <%= form_tag(:action => 'map_student', :id => @section.id, :teacher_id => @teacher.id) do %><%= label_tag(:student_num, "Add New Student") %> <%= text_field_tag(:student_num) %> <%= submit_tag("Add") %> <% end %> </p>
   
   <div><%= pluralize(@section.students.size, 'student') %> found</div>
   <%= form_tag(:action => 'unmap_students', :id => @section.id, :teacher_id => @teacher.id) do %>

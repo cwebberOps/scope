@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110710231325) do
+ActiveRecord::Schema.define(:version => 20110711195003) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -154,6 +154,8 @@ ActiveRecord::Schema.define(:version => 20110710231325) do
     t.integer  "import_status",               :default => 0
     t.integer  "is_enrolled",                 :default => 1
   end
+
+  add_index "students", ["student_num"], :name => "index_students_on_student_num", :unique => true
 
   create_table "sub_standards", :force => true do |t|
     t.integer  "standard_id"

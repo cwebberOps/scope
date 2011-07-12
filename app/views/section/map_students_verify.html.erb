@@ -1,0 +1,140 @@
+<% @page_title = "Import Section" %>
+
+<%= link_to("<< Back to List", {:action => 'list_students', :id => @section.id}, :class => 'back-link') %>
+
+<div class="lookup import">
+  <h2><%= @page_title %></h2>
+  <%= form_tag({:action => 'map_students_complete', :id => @section.id}) do %>
+
+  <h3>Summary</h3>
+  <table>
+    <tr>
+      <th>
+        Unchanged
+      </th>
+      <td>
+        <%= @unchanged_students.count %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        New
+      </th>
+      <td>
+        <%= @new_students.count %>
+      </td>      
+    </tr>
+    <tr>
+      <th>
+        No Longer In Section
+      </th>
+      <td>
+        <%= @old_students.count %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Previously Enrolled
+      </th>
+      <td>
+        <%= @prev_students.count %>
+      </td>
+    </tr>
+  </table>
+  
+  <% if @new_students.count != 0 %>
+  <h3>New Students</h3>
+  <table>
+    <tr>
+      <th>&nbsp;</th><th>Student Num</th><th>Last Name</th><th>First Name</th><th>Grad Year</th>
+    </tr>
+    <% @new_students.each do |student| %>
+      <tr>
+        <td>
+          <%= check_box_tag("new_student_id[]", student.id, true) %>
+        </td>
+        <td>
+          <%= student.student_num %>
+        </td>
+        <td>
+          <%= student.last_name %>          
+        </td>
+        <td>
+          <%= student.first_name %>
+        </td>
+        <td>
+          <%= student.grad_year %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <% end %>
+  
+  <% if @prev_students.count != 0 %>
+  <h3>Students Previously Enrolled</h3>
+  <table>
+    <tr>
+      <th>&nbsp;</th><th>Student Num</th><th>Last Name</th><th>First Name</th><th>Grad Year</th>
+    </tr>
+    <% @prev_students.each do |student| %>
+      <tr>
+        <td>
+          <%= check_box_tag("prev_student_id[]", student.id, true) %>
+        </td>
+        <td>
+          <%= student.student_num %>
+        </td>
+        <td>
+          <%= student.last_name %>          
+        </td>
+        <td>
+          <%= student.first_name %>
+        </td>
+        <td>
+          <%= student.grad_year %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <% end %>
+  
+  <% if @old_students.count != 0 %>
+  <h3>Students No Longer Enrolled</h3>
+  <table>
+    <tr>
+      <th>&nbsp;</th><th>Student Num</th><th>Last Name</th><th>First Name</th><th>Grad Year</th>
+    </tr>
+    <% @old_students.each do |student| %>
+      <tr>
+        <td>
+          <%= check_box_tag("old_student_id[]", student.id, true) %>
+        </td>
+        <td>
+          <%= student.student_num %>
+        </td>
+        <td>
+          <%= student.last_name %>          
+        </td>
+        <td>
+          <%= student.first_name %>
+        </td>
+        <td>
+          <%= student.grad_year %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <% end %>
+  
+  <div class="form-buttons">
+      <%= submit_tag("Confirm") %>
+  </div>
+  <% end %>
+</div>
+
+<pre>
+
+<% @errors.each do |error| %>
+  <%= error %>
+<% end %>
+</pre>

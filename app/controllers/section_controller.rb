@@ -75,14 +75,32 @@ class SectionController < ApplicationController
     @section = Section.find(params[:id])
   end
   
-  def map_students_verify
-    
-  end
-  
   def map_students_complete
+    message =''
+    @section = Section.find(params[:id])
+    file = params[:file]
+    @errors = []
+    if file.original_filename =~ /.xlsx/
+      excel = Excelx.new(file.tempfile.path, false, :warning)
+    else
+      excel = Excel.new(file.tempfile.path, false, :warning)
+    end
     
+    excel.default_sheet = excel.sheets.first
+    whole_section = []
+    2.upto(excel.last_row) do |line|
+      if student = Student.find_by_student_num(excel.cell(line, 'A').to_i)
+        whole_section << student        
+      else
+        message = message + "#{excel.cell(line, 'A').to_i} is not a valid student number."
+      end
+    end
+      diff = @section.students - whole_section
+      @section.students = (@section.students | whole_section) - diff
+    flash[:notice] = message
+    redirect_to(:action => 'list_students', :id => @section.id, :teacher_id => @teacher.id)
   end
-  
+    
   def map_student
     @section = Section.find(params[:id])
     if params[:student_num]

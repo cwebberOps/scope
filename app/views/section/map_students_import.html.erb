@@ -1,0 +1,20 @@
+<% @page_title = "Import Section" %>
+
+<%= link_to("<< Back to List", {:action => 'list_students', :id => @section.id, :teacher_id => @teacher.id}, :class => 'back-link') %>
+
+<div class="lookup import">
+  <h2><%= @page_title %></h2>
+
+  <% form_tag({:action => 'map_students_complete', :id => @section.id, :teacher_id => @teacher.id}, :multipart => true) do %>
+    <table>
+      <tr>
+        <th><%= label_tag(:file) %></th>
+        <td><%= file_field_tag(:file) %></td>
+      </tr>
+    </table>
+
+    <div class="form-buttons">
+      <%= submit_tag("Import") %>
+    </div>
+  <% end %>
+</div>
