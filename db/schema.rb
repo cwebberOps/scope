@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110711195003) do
+ActiveRecord::Schema.define(:version => 20110713040042) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20110711195003) do
 
   add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
 
-  create_table "assesment_assignments", :force => true do |t|
-    t.integer  "assignment_id"
+  create_table "assessment_assignments", :force => true do |t|
+    t.integer  "assessment_id"
     t.integer  "section_id"
     t.datetime "date_start"
     t.datetime "date_end"
@@ -31,10 +31,12 @@ ActiveRecord::Schema.define(:version => 20110711195003) do
     t.boolean  "can_review"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_visible",    :default => true
+    t.string   "name"
   end
 
-  add_index "assesment_assignments", ["assignment_id"], :name => "index_assesment_assignments_on_assignment_id"
-  add_index "assesment_assignments", ["section_id"], :name => "index_assesment_assignments_on_section_id"
+  add_index "assessment_assignments", ["assessment_id"], :name => "index_assesment_assignments_on_assignment_id"
+  add_index "assessment_assignments", ["section_id"], :name => "index_assesment_assignments_on_section_id"
 
   create_table "assessments", :force => true do |t|
     t.string   "name"

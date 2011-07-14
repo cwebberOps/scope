@@ -1,0 +1,37 @@
+<% @page_title = "Assignments for #{@teacher.name}" %>
+
+<%= link_to("<< Back to Menu", {:controller => 'Admin', :action => 'menu'}, :class => 'back-link') %>
+<div class="section list">
+  <h2><%= @page_title %></h2>
+  
+  <%= link_to('Add New Assignment', {:action => 'new', :teacher_id => @teacher.id}, :class => 'action new') %>
+  
+  <div><%= pluralize(@assessment_assignments.size, 'assignment') %> found</div>
+  
+  <table class="listing" summary="answer list">
+    <tr>
+      <th>Name</th>
+      <th>Visible<br />To Students</th>
+      <th>Assessment</th>
+      <th>Sections</th>
+      <th>Actions</th>
+    </tr> 
+    <% @assessment_assignments.each do |assignment| %>
+    <tr class="<%= cycle('odd', 'even') %>"> 
+      <td><%= assignment.name %> </td>
+      <td><%= status_tag(assignment.is_visible, :true => "Correct", :false => "") %> </td>
+      <td>
+        <% assignment.sections do |section| %>
+        Per. <%= section.period.period_num %> - <%= section.section_level.name %> <%= section.subject.name %> 
+        <% end %>
+      </td>
+      <td><%= assignment.assessment.name %> </td>
+      <td class="actions">
+        <%= link_to('Edit', {:action => 'edit', :id => assignment.id, :teacher_id => @teacher.id}, :class => 'action edit') %>
+        <%= link_to('Delete', {:action => 'delete', :id => assignment.id, :teacher_id => @teacher.id}, :class => 'action delete') %>
+      </td>
+    </tr> 
+    <% end %>
+  </table> 
+
+</div>

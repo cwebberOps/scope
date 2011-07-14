@@ -1,0 +1,2 @@
+module AssessmentAssignmentHelper
+end
