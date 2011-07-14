@@ -4,26 +4,49 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Scope | <%= @page_title || 'Admin Area' %></title>
-    <%= stylesheet_link_tag 'screen.css', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag 'style.css', :media => 'screen, projection' %>
     <%= stylesheet_link_tag 'print.css', :media => 'print' %>
     <!--[if IE]><%= stylesheet_link_tag 'ie.css', :media => 'screen, projection' %><![endif]-->
   </head>
   <body>
-    <div id="header">
-      <h1>Scope Admin</h1>
-    </div>
-    <div id="main">
-      <% if !flash[:notice].blank? %>
-      <div class="notice">
-        <%= flash[:notice].html_safe %>
+    <div id="container">
+      <div id="header">
+        <div>
+          <h1><a href="#">Proficiency<strong style="color:#009900">Scope</strong></a></h1>
+          <ul id="nav">
+            <li class="on"><a href="/admin/menu">Admin</a></li>
+
+            <li><a href="/index.html">about</a></li>
+            <li><a href="/index.html">services</a></li>
+            <li><a href="/index.html">contact</a></li>
+          </ul>
+        </div>
       </div>
-      <% end %>
-      <div id="content">
-        <%= yield %>
+      <div id="strike">
+        <div class="home">
+          <p>Admin Area</p>
+        </div>
+      </div>
+
+      <div id="body">
+        <% if !flash[:notice].blank? %>
+        <div class="notice">
+          <%= flash[:notice].html_safe %>
+        </div>
+        <% end %>
+        <div id="content">
+          <%= yield %>
+        </div>
+      </div>
+      
+      <div id="footer">
+        <div>
+          <div>
+	Copyright &copy; 2011 Your Name here, All Rights Reserved.
+          </div>
+        </div>
       </div>
     </div>
-    <div id="footer">
-      <p id="copyright">&copy; goes here. </p>
-    </div>
+
   </body>
 </html>

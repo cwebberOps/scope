@@ -3,12 +3,12 @@
 <%= link_to("<< Back to Menu", {:controller => 'admin', :action => 'menu'}, :class => 'back-link') %>
 <div class="assessment list">
   <h2><%= @page_title %></h2>
-
-  <%= link_to('Add New Assessment', {:action => 'new'}, :class => 'action new') %>
-
-  <div><%= pluralize(@assessments.size, 'assessment') %> found</div>
   
-  <table class="listing" summary="assessment list">
+  <p><%= link_to('Add New Assessment', {:action => 'new'}, :class => 'action new') %></p>
+
+  <p><div><%= pluralize(@assessments.size, 'assessment') %> found</div>
+  
+  <table class="listing" summary="assessment list" cellspacing='0'>
     <tr>
       <th>Name</th>
       <th>Actions</th>
@@ -25,5 +25,5 @@
     </tr> 
     <% end %>
   </table> 
-
+  </p>
 </div>
